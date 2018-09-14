@@ -2,7 +2,7 @@
 
 ### Install Steps for Linux/Mac
  
- - Via script
+ - Via script - copy and run the command below
  1. `git clone https://github.com/NeveIsa/FreeboardRESTButtons.git ; cd FreeboardRESTButtons ; ./start` 
 
  - Manual
