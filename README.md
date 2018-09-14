@@ -18,7 +18,7 @@
 
 ### Debugging response / requests
  1. As of now, the request and responses can be viewed in your browser's "Developer Window/Panel" under "Network" tab.
- 2. Display of response on the widget is coming soon.
+ 2. Display status of response on the widget is updated after every request.
 
 ## NOTES:
   1. Editing of created buttons is not supported as of now. Create a new button instead of editiing.
