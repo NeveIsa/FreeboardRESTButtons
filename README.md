@@ -4,7 +4,7 @@
  
  - Via script - copy and run the command below
  ```bash
-	git clone https://github.com/NeveIsa/FreeboardRESTButtons.git ; cd FreeboardRESTButtons ; ./start` 
+	git clone https://github.com/NeveIsa/FreeboardRESTButtons.git ; cd FreeboardRESTButtons ; ./start 
  ```
 
  - Manual
