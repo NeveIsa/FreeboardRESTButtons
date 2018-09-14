@@ -1,0 +1,19 @@
+#!/bin/bash
+
+#rm -rf freeboard
+
+
+if ls freeboard >> /dev/null ; then echo found freeboard directory... not running git clone
+else
+ git clone https://github.com/Freeboard/freeboard.git
+fi
+
+#exit
+
+cp widget.rest.button.js freeboard/plugins/thirdparty/
+ls freeboard/plugins/thirdparty/widget.rest.button.js
+
+echo -e "\n<script>head.js('plugins/thirdparty/widget.rest.button.js',()=>{})</script>" >> freeboard/index.html
+
+#start
+xdg-open freeboard/index.html
