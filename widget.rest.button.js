@@ -150,7 +150,7 @@ function isa_guid() {
  	{
  		name: "post_value",
  		display_name: "PUT/POST Value (optional)",
- 		type: "text"
+ 		type: "text",
 		description: "Note: single quotes(') are not allowed in headers",
  	},
  	{

@@ -1,4 +1,4 @@
-# FreeboardRESTButtons:  Freeboard widget for makiing REST requests
+# FreeboardRESTButtons:  Freeboard widget for making REST requests
 
 ### Install Steps for Linux/Mac
 
