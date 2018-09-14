@@ -132,7 +132,7 @@ function isa_guid() {
                 name: "headers",
                 display_name: "Headers",
                 type: "array",
-		description: "Note: single quotes(') are not allowed in headers",
+		description: "Note: single quotes are not allowed in headers",
                 settings: [
 				{
 					name: "name",
@@ -151,7 +151,7 @@ function isa_guid() {
  		name: "post_value",
  		display_name: "PUT/POST Value (optional)",
  		type: "text",
-		description: "Note: single quotes(') are not allowed in headers",
+		description: "Note: single quotes are not allowed in body",
  	},
  	{
  		name: "button_color",
