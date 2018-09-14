@@ -14,7 +14,7 @@
  1. Add a new pane in freeboard dash (+ sign).
  2. In the newly created pane, add a widget (+ sign)
  3. In the drop down menu, select REST Button Widget.
- 4. Fill in the REST request details.
+ 4. Fill in the REST request details  (for testing on http://httpbin.org, just accept the defaults and just select the correct HTTP Method)
 
 ### Debugging response / requests
  1. As of now, the request and responses can be viewed in your browser's "Developer Window/Panel" under "Network" tab.
