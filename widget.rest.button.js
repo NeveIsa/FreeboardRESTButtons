@@ -52,12 +52,24 @@ function isa_guid() {
 			console.log(set_headers);
 		}
 
-		var myButton = $("<button type='button' id='button-" + uuid +  "' onclick='buttonFunction" + uuid + "()'>"+ currentSettings.button_name +"</button>");
-		var myScript = $("<script>function buttonFunction" + uuid +  "() {var xhttp = new XMLHttpRequest(); xhttp.open('" + currentSettings.http_verb + "', '"+currentSettings.rest_path+"', true); " + set_headers  + " xhttp.send('" + currentSettings.post_value + "');}</script>");
+		var myButton = $("<button class='isa_rest_button' type='button' id='button-" + uuid +  "' onclick='buttonFunction" + uuid + "()'>"+ currentSettings.button_name +"</button>");
 
-			console.log(myScript.html());
+
+		responseDivID="response_" + uuid;
+		
+		status_text = Date().substring(15,25) +  ": status"
+		var isaResponseDiv = $("<p class='isa_rest_response' style='background:black;' id='" + responseDivID + "'>" + status_text  + "</p>")
+
+		sending_status = `$('#${responseDivID}').html("Sending...");`
+
+		var myScript = $("<script>function buttonFunction" + uuid +  "() {" + sending_status  + "var xhttp = new XMLHttpRequest(); xhttp.open('" + currentSettings.http_verb + "', '"+currentSettings.rest_path+"', false); " + set_headers  + " xhttp.send('" + currentSettings.post_value + "');  $('#" + responseDivID  + "').html(Date() + ' </br> HTTP_STATUS: '  + xhttp.status ); console.log(xhttp.response)  }</script>");
+
+		console.log(myScript.html());
+
+
 
 		var isaCSS = $("<style> #button-" + uuid + " { background-color: " + currentSettings.button_color  + "; /* Green */ border: none; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; }</style>")
+
 		//TODO: implement payload
 
 		function updateState() {
@@ -69,9 +81,16 @@ function isa_guid() {
 
 		this.render = function (containerElement) {
 			$(containerElement).append(myButton);
+			$(containerElement).append(isaResponseDiv);
 			$(containerElement).append(myScript);
 			$(containerElement).append(isaCSS);
+			freeboard.addStyle('.isa_rest_button','width: 100%; height:50%; float:left')
+			freeboard.addStyle('.isa_rest_response','width: 100%; height:50%; float:right;')
 		}		
+
+
+
+		
 
 		this.onSettingsChanged = function (newSettings) {
 			currentSettings = newSettings;
@@ -85,8 +104,11 @@ function isa_guid() {
      this.onDispose = function () {
      }
 
+
+		
+    // ISA --> for proper height - http://freeboard.github.io/freeboard/docs/plugin_example.html 
      this.getHeight = function () {    
-     	return 1;
+     	return 2;
      }
 
      this.onSettingsChanged(settings);
@@ -95,6 +117,7 @@ function isa_guid() {
  freeboard.loadWidgetPlugin({
  	type_name: "button_widget",
  	display_name: "REST Button Widget",
+	fill_size: false,
  	settings: [
  	{
  		name: "button_name",
