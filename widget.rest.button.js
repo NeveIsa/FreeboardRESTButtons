@@ -1,4 +1,4 @@
-//Freeboard.io Widget to create a simple button which fires a REST Events
+//Freeboard.io Widget to create a simple button which fires a REST POST Event to control a sensor
 //
 //
 
@@ -25,22 +25,35 @@ function isa_guid() {
 		if (typeof currentSettings.button_color === 'undefined') currentSettings["button_color"] = "green";
 		if (typeof currentSettings.post_value === 'undefined') currentSettings["post_value"] = "";
 
+		
+		// Automatically set httpbin.org path for testing
+		//
+		if (currentSettings.rest_path=="http://httpbin.org/_auto")
+		{
+			currentSettings.rest_path = "http://httpbin.org/" + currentSettings.http_verb.toLowerCase();
+		}
+
 		set_headers=""
 
-		if (typeof currentSettings.headers !== 'undefined')
+		if (typeof currentSettings.headers !== 'undefined' && currentSettings.headers.length !=0 )
 		{
-			headers = JSON.parse(currentSettings.headers)
-		
-			for (h in headers)
+			//headers = JSON.parse(currentSettings.headers)
+			
+			isa_headers = currentSettings.headers	
+			
+			for (index in isa_headers)
 			{
-				set_headers += " xhttp.setRequestHeader('" + h + "', '" + headers[h] + "'); "
+				var name  = isa_headers[index].name;
+				var value = isa_headers[index].value;
+
+				set_headers += " xhttp.setRequestHeader('" + name + "', '" + value + "'); "
 			}
 
 			console.log(set_headers);
 		}
 
 		var myButton = $("<button type='button' id='button-" + uuid +  "' onclick='buttonFunction" + uuid + "()'>"+ currentSettings.button_name +"</button>");
-		var myScript = $("<script>function buttonFunction" + uuid +  "() {var xhttp = new XMLHttpRequest(); xhttp.open('POST', '"+currentSettings.rest_path+"', true); " + set_headers  + " xhttp.send('" + currentSettings.post_value + "');}</script>");
+		var myScript = $("<script>function buttonFunction" + uuid +  "() {var xhttp = new XMLHttpRequest(); xhttp.open('" + currentSettings.http_verb + "', '"+currentSettings.rest_path+"', true); " + set_headers  + " xhttp.send('" + currentSettings.post_value + "');}</script>");
 
 			console.log(myScript.html());
 
@@ -81,31 +94,68 @@ function isa_guid() {
 
  freeboard.loadWidgetPlugin({
  	type_name: "button_widget",
- 	display_name: "POST Button Widget",
+ 	display_name: "REST Button Widget",
  	settings: [
  	{
  		name: "button_name",
  		display_name: "Button Name",
- 		type: "text"
- 	},{
+ 		type: "text",
+		default_value: "Test httpbin.org"
+ 	},
+	{
+		name: "http_verb",
+		display_name: "HTTP Method",
+		type: "option",
+		options : [ 
+				{name:"GET",value:"GET"},
+				{name:"POST",value:"POST"},
+				{name:"PUT",value:"PUT"},
+				{name:"DELETE",value:"DELETE"}
+		]		
+	},
+	{
  		name: "rest_path",
- 		display_name: "REST Path (POST)",
- 		type: "text"
+ 		display_name: "REST URL Path",
+ 		type: "text",
+		default_value: "http://httpbin.org/_auto"
  	},
- 	{
- 		name: "headers",
- 		display_name: "Headers (optional) in JSON key value pairs",
- 		type: "text"
- 	},
+ 	
+	//{
+ 	//	name: "headers",
+ 	//	display_name: "Headers (optional) in JSON key value pairs",
+ 	//	type: "text",
+	//	default_value: "{}"
+	//	description: 'Example - {"Content-Type":"application/json","X-My-Header":"Whatever"}'
+ 	//},
+	
+	{
+                name: "headers",
+                display_name: "Headers",
+                type: "array",
+                settings: [
+				{
+					name: "name",
+					display_name: "Name",
+					type: "text"
+				},
+				{
+					name: "value",
+					display_name: "Value",
+					type: "text"
+				}
+                          ]
+         },
+
  	{
  		name: "post_value",
- 		display_name: "POST Value (optional)[no ' allowed]",
+ 		display_name: "PUT/POST Value (optional)",
  		type: "text"
  	},
  	{
  		name: "button_color",
  		display_name: "Button Color (optional)",
- 		type: "text"
+ 		type: "text",
+		default_value: "green"
  	}
  	],
  	newInstance: function (settings, newInstanceCallback) {
