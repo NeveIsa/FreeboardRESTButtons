@@ -1,6 +1,6 @@
 # FreeboardRESTButtons:  Freeboard widget for makiing REST requests
 
-### Install Steps for Linux
+### Install Steps for Linux/Mac
 
  1. Clone this repo
  2. Run make (OR if you don't have make installed, just run ./start)
