@@ -1,7 +1,11 @@
 # FreeboardRESTButtons:  Freeboard widget for making REST requests
 
 ### Install Steps for Linux/Mac
+ 
+ - Via script
+ 1. `git clone https://github.com/NeveIsa/FreeboardRESTButtons.git && cd FreeboardRESTButtons && ./start` 
 
+ - Manual
  1. Clone this repo.
  2. Run make (OR if you don't have make installed, just run ./start).
 
