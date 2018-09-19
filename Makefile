@@ -7,4 +7,7 @@ clean:
 
 install: clean start
 
+example: install
+
+
 .PHONY: start clean

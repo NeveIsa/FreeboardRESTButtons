@@ -20,6 +20,8 @@ echo -e "\n<script>head.js('plugins/thirdparty/widget.rest.button.js',()=>{})</s
 if [ $(uname) = "Linux" ]
 then
 	xdg-open freeboard/index.html
+	#xdg-open freeboard/index.html?load=example.json
 else
 	open freeboard/index.html
+	#open freeboard/index.html?load=example.json
 fi
