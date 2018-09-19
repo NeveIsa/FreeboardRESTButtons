@@ -13,15 +13,23 @@ fi
 cp widget.rest.button.js freeboard/plugins/thirdparty/
 ls freeboard/plugins/thirdparty/widget.rest.button.js
 
+cp exmaple.json freeboard/example.json
+
 echo -e "\n<script>head.js('plugins/thirdparty/widget.rest.button.js',()=>{})</script>" >> freeboard/index.html
 
 #start
 
+screen -dmS pythonServer python -m SimpleHTTPServer 8888
+
 if [ $(uname) = "Linux" ]
 then
 	xdg-open freeboard/index.html
-	#xdg-open freeboard/index.html?load=example.json
+	xdg-open http://localhost:8888/freeboard/index.html?load=example.json
 else
 	open freeboard/index.html
-	#open freeboard/index.html?load=example.json
+	open http://localhost:8888/freeboard/index.html?load=example.json
 fi
+
+
+sleep 600
+pkill screen
