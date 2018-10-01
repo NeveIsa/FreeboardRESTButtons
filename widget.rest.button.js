@@ -27,36 +27,6 @@ function isa_guid() {
 		if (typeof currentSettings.button_color === 'undefined') currentSettings["button_color"] = "green";
 		if (typeof currentSettings.post_value === 'undefined') currentSettings["post_value"] = "";
 		
-		{
-			try
-			{
-
-				if (currentSettings.include_timestamp)
-				{
-					//alert(currentSettings.post_value)
-					
-					if (currentSettings.post_value.length===0)
-					{
-						currentSettings["post_value"]='{}';
-					}
-
-					var jtemp=JSON.parse(currentSettings.post_value);
-
-					jtemp["timestamp"] = new Date().toJSON();
-
-					currentSettings["post_value"] = JSON.stringify(jtemp);
-					
-					console.log(currentSettings.post_value);
-				}
-
-			}
-			catch(err)
-			{
-				console.log(err);
-				$('#'+responseDivID).html(JSON.stringify(err));
-				return;
-			}
-		}
 
 		
 		// Automatically set httpbin.org path for testing
@@ -94,7 +64,41 @@ function isa_guid() {
 
 		sending_status = `$('#${responseDivID}').html("Sending...");`
 
-		var myScript = $("<script>function buttonFunction" + uuid +  "() {" + sending_status  + "var xhttp = new XMLHttpRequest(); xhttp.open('" + currentSettings.http_verb + "', '"+currentSettings.rest_path+"', false); " + set_headers  + " xhttp.send('" + currentSettings.post_value + "');  $('#" + responseDivID  + "').html(Date() + ' </br> HTTP_STATUS: '  + xhttp.status ); console.log(xhttp.response)  }</script>");
+		if(currentSettings.include_timestamp) 
+		{
+			function post_value_with_timestamp()
+			{
+					if (currentSettings.post_value.length===0)
+					{
+						currentSettings["post_value"]='{}';
+					}
+
+					var jtemp=JSON.parse(currentSettings.post_value);
+
+					jtemp["timestamp"] = new Date().toJSON();
+
+					currentSettings["post_value"] = JSON.stringify(jtemp);
+					
+					console.log(currentSettings.post_value);
+
+					return currentSettings.post_value;
+			}
+
+		}
+		else
+		{
+			function post_value_with_timestamp()
+			{
+				return currentSettings.post_value; 
+			}
+		}		
+
+
+		window.post_value_with_timestamp = post_value_with_timestamp;
+
+		//var myScript = $("<script>function buttonFunction" + uuid +  "() {" + sending_status  + "var xhttp = new XMLHttpRequest(); xhttp.open('" + currentSettings.http_verb + "', '"+currentSettings.rest_path+"', false); " + set_headers  + " xhttp.send('" + currentSettings.post_value + "');  $('#" + responseDivID  + "').html(Date() + ' </br> HTTP_STATUS: '  + xhttp.status ); console.log(xhttp.response)  }</script>");
+		
+		var myScript = $("<script>function buttonFunction" + uuid +  "() {" + sending_status  + "var xhttp = new XMLHttpRequest(); xhttp.open('" + currentSettings.http_verb + "', '"+currentSettings.rest_path+"', false); " + set_headers  + " xhttp.send(" + "post_value_with_timestamp()"  + ");  $('#" + responseDivID  + "').html(Date() + ' </br> HTTP_STATUS: '  + xhttp.status ); console.log(xhttp.response)  }</script>");
 
 		console.log(myScript.html());
 
