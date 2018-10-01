@@ -19,7 +19,7 @@ echo -e "\n<script>head.js('plugins/thirdparty/widget.rest.button.js',()=>{})</s
 
 #start
 
-screen -dmS pythonServer python -m SimpleHTTPServer 8888
+xterm -e  python -m SimpleHTTPServer 8888 &
 sleep 1
 if [ $(uname) = "Linux" ]
 then
@@ -32,4 +32,4 @@ fi
 
 
 sleep 600
-pkill screen
+pkill xterm
