@@ -19,7 +19,7 @@ echo -e "\n<script>head.js('plugins/thirdparty/widget.rest.button.js',()=>{})</s
 
 #start
 
-xterm -e  python -m SimpleHTTPServer 8888 &
+x-terminal-emulator -e  python -m SimpleHTTPServer 8888 &
 sleep 1
 if [ $(uname) = "Linux" ]
 then
