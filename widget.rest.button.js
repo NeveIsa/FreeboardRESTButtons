@@ -22,8 +22,41 @@ function isa_guid() {
 		var currentSettings = settings;
 		var uuid = isa_guid()
 
+		responseDivID="response_" + uuid;
+		
 		if (typeof currentSettings.button_color === 'undefined') currentSettings["button_color"] = "green";
 		if (typeof currentSettings.post_value === 'undefined') currentSettings["post_value"] = "";
+		
+		{
+			try
+			{
+
+				if (currentSettings.include_timestamp)
+				{
+					//alert(currentSettings.post_value)
+					
+					if (currentSettings.post_value.length===0)
+					{
+						currentSettings["post_value"]='{}';
+					}
+
+					var jtemp=JSON.parse(currentSettings.post_value);
+
+					jtemp["timestamp"] = new Date().toJSON();
+
+					currentSettings["post_value"] = JSON.stringify(jtemp);
+					
+					console.log(currentSettings.post_value);
+				}
+
+			}
+			catch(err)
+			{
+				console.log(err);
+				$('#'+responseDivID).html(JSON.stringify(err));
+				return;
+			}
+		}
 
 		
 		// Automatically set httpbin.org path for testing
@@ -55,7 +88,6 @@ function isa_guid() {
 		var myButton = $("<button class='isa_rest_button' type='button' id='button-" + uuid +  "' onclick='buttonFunction" + uuid + "()'>"+ currentSettings.button_name +"</button>");
 
 
-		responseDivID="response_" + uuid;
 		
 		status_text = Date().substring(15,25) +  ": status"
 		var isaResponseDiv = $("<p class='isa_rest_response' style='background:black;' id='" + responseDivID + "'>" + status_text  + "</p>")
@@ -175,6 +207,12 @@ function isa_guid() {
  		display_name: "PUT/POST Value (optional)",
  		type: "text",
 		description: "Note: single quotes are not allowed in body",
+ 	},
+ 	{
+ 		name: "include_timestamp",
+ 		display_name: "Include Timestamp (optional)",
+ 		type: "boolean"
+		//default_value: "green"
  	},
  	{
  		name: "button_color",
