@@ -16,33 +16,18 @@
 				{
 					"type": "button_widget",
 					"settings": {
-						"button_name": "SCREEN_PRINTER_1_REFILL",
-						"http_verb": "GET",
-						"rest_path": "http://httpbin.org/get",
-						"post_value": "",
-						"button_color": "green"
-					}
-				}
-			]
-		},
-		{
-			"width": 1,
-			"row": {
-				"3": 1
-			},
-			"col": {
-				"3": 3
-			},
-			"col_width": 1,
-			"widgets": [
-				{
-					"type": "button_widget",
-					"settings": {
-						"button_name": "SCREEN_PRINTER_MAINTENANCE",
-						"http_verb": "GET",
-						"rest_path": "http://httpbin.org/get",
-						"post_value": "",
-						"button_color": "red"
+						"button_name": "Pick and Place 1 - Refill",
+						"http_verb": "POST",
+						"rest_path": "http://elasticsearchserver:9200/fb/event",
+						"post_value": "{\"pp1_refill\":1,\"timestamp\":\"2018-10-03T05:50:22.265Z\"}",
+						"include_timestamp": true,
+						"button_color": "green",
+						"headers": [
+							{
+								"name": "content-type",
+								"value": "application/json"
+							}
+						]
 					}
 				}
 			]
@@ -60,11 +45,163 @@
 				{
 					"type": "button_widget",
 					"settings": {
-						"button_name": "SCREEN_PRINTER_2_REFILL",
-						"http_verb": "GET",
-						"rest_path": "http://httpbin.org/get",
-						"post_value": "",
-						"button_color": "green"
+						"button_name": "Pick and Place 1 - Service",
+						"http_verb": "POST",
+						"rest_path": "http://elasticsearchserver:9200/fb/event",
+						"post_value": "{\"pp1_service\":1,\"timestamp\":\"2018-10-03T06:28:13.896Z\"}",
+						"include_timestamp": true,
+						"button_color": "red",
+						"headers": [
+							{
+								"name": "content-type",
+								"value": "application/json"
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"width": 1,
+			"row": {
+				"3": 7
+			},
+			"col": {
+				"3": 1
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "button_widget",
+					"settings": {
+						"button_name": "Pick and Place 2 - Refill",
+						"http_verb": "POST",
+						"rest_path": "http://elasticsearchserver:9200/fb/event",
+						"post_value": "{\"pp2_refill\":1,\"timestamp\":\"2018-10-03T05:56:00.663Z\"}",
+						"include_timestamp": true,
+						"button_color": "green",
+						"headers": [
+							{
+								"name": "content-type",
+								"value": "application/json"
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"width": 1,
+			"row": {
+				"3": 7
+			},
+			"col": {
+				"3": 3
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "button_widget",
+					"settings": {
+						"button_name": "Reflow Oven - Service",
+						"http_verb": "POST",
+						"rest_path": "http://elasticsearchserver:9200/fb/event",
+						"post_value": "{\"rf_service\":1,\"timestamp\":\"2018-10-03T06:25:49.385Z\"}",
+						"include_timestamp": true,
+						"button_color": "red",
+						"headers": [
+							{
+								"name": "content-type",
+								"value": "application/json"
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"width": 1,
+			"row": {
+				"3": 7
+			},
+			"col": {
+				"3": 2
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "button_widget",
+					"settings": {
+						"button_name": "Pick and Place 2 - Service",
+						"http_verb": "POST",
+						"rest_path": "http://elasticsearchserver:9200/fb/event",
+						"post_value": "{\"pp2_service\":1,\"timestamp\":\"2018-10-03T06:29:37.937Z\"}",
+						"include_timestamp": true,
+						"button_color": "red",
+						"headers": [
+							{
+								"name": "content-type",
+								"value": "application/json"
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"width": 1,
+			"row": {
+				"3": 13
+			},
+			"col": {
+				"3": 1
+			},
+			"col_width": 3,
+			"widgets": [
+				{
+					"type": "button_widget",
+					"settings": {
+						"button_name": "Break (Lunch/Tea)",
+						"http_verb": "POST",
+						"rest_path": "http://elasticsearchserver:9200/fb/event",
+						"post_value": "{\"break\":1,\"timestamp\":\"2018-10-03T09:50:05.191Z\"}",
+						"include_timestamp": true,
+						"button_color": "orange",
+						"headers": [
+							{
+								"name": "content-type",
+								"value": "application/json"
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"width": 1,
+			"row": {
+				"3": 1
+			},
+			"col": {
+				"3": 3
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "button_widget",
+					"settings": {
+						"button_name": "Screen Printer - Service",
+						"http_verb": "POST",
+						"rest_path": "http://elasticsearchserver:9200/fb/event",
+						"post_value": "{\"sp_service\":1,\"timestamp\":\"2018-10-03T10:42:54.830Z\"}",
+						"include_timestamp": true,
+						"button_color": "red",
+						"headers": [
+							{
+								"name": "content-type",
+								"value": "application/json"
+							}
+						]
 					}
 				}
 			]
