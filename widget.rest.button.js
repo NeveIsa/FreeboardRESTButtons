@@ -91,14 +91,14 @@ function isa_guid() {
 			{
 				return currentSettings.post_value; 
 			}
-		}		
+		}	
 
+		eval("post_value_with_timestamp_" + uuid + " = post_value_with_timestamp"); // create a copy of the function
 
-		window.post_value_with_timestamp = post_value_with_timestamp;
 
 		//var myScript = $("<script>function buttonFunction" + uuid +  "() {" + sending_status  + "var xhttp = new XMLHttpRequest(); xhttp.open('" + currentSettings.http_verb + "', '"+currentSettings.rest_path+"', false); " + set_headers  + " xhttp.send('" + currentSettings.post_value + "');  $('#" + responseDivID  + "').html(Date() + ' </br> HTTP_STATUS: '  + xhttp.status ); console.log(xhttp.response)  }</script>");
 		
-		var myScript = $("<script>function buttonFunction" + uuid +  "() {" + sending_status  + "var xhttp = new XMLHttpRequest(); xhttp.open('" + currentSettings.http_verb + "', '"+currentSettings.rest_path+"', false); " + set_headers  + " xhttp.send(" + "post_value_with_timestamp()"  + ");  $('#" + responseDivID  + "').html(Date() + ' </br> HTTP_STATUS: '  + xhttp.status ); console.log(xhttp.response)  }</script>");
+		var myScript = $("<script>function buttonFunction" + uuid +  "() {" + sending_status  + "var xhttp = new XMLHttpRequest(); xhttp.open('" + currentSettings.http_verb + "', '"+currentSettings.rest_path+"', false); " + set_headers  + " xhttp.send(" + "post_value_with_timestamp_" + uuid + "()"  + ");  $('#" + responseDivID  + "').html(Date() + ' </br> HTTP_STATUS: '  + xhttp.status ); console.log(xhttp.response)  }</script>");
 
 		console.log(myScript.html());
 
