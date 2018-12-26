@@ -9,7 +9,7 @@
 				"3": 1
 			},
 			"col": {
-				"3": 2
+				"3": 1
 			},
 			"col_width": 1,
 			"widgets": [
@@ -19,7 +19,7 @@
 						"button_name": "Pick and Place 1 - Refill",
 						"http_verb": "POST",
 						"rest_path": "http://elasticsearchserver:9200/fb/event",
-						"post_value": "{\"pp1_refill\":1,\"timestamp\":\"2018-12-26T11:22:26.403Z\"}",
+						"post_value": "{\"pp1_refill\":1,\"timestamp\":\"2018-10-03T05:50:22.265Z\"}",
 						"include_timestamp": true,
 						"button_color": "green",
 						"headers": [
@@ -35,10 +35,10 @@
 		{
 			"width": 1,
 			"row": {
-				"3": 13
+				"3": 1
 			},
 			"col": {
-				"3": 1
+				"3": 2
 			},
 			"col_width": 1,
 			"widgets": [
@@ -48,7 +48,7 @@
 						"button_name": "Pick and Place 1 - Service",
 						"http_verb": "POST",
 						"rest_path": "http://elasticsearchserver:9200/fb/event",
-						"post_value": "{\"pp1_service\":1,\"timestamp\":\"2018-12-26T11:22:30.116Z\"}",
+						"post_value": "{\"pp1_service\":1,\"timestamp\":\"2018-10-03T06:28:13.896Z\"}",
 						"include_timestamp": true,
 						"button_color": "red",
 						"headers": [
@@ -64,39 +64,10 @@
 		{
 			"width": 1,
 			"row": {
-				"3": 13
+				"3": 7
 			},
 			"col": {
-				"3": 3
-			},
-			"col_width": 1,
-			"widgets": [
-				{
-					"type": "button_widget",
-					"settings": {
-						"button_name": "Screen Printer - Service",
-						"http_verb": "POST",
-						"rest_path": "http://elasticsearchserver:9200/fb/event",
-						"post_value": "{\"sp_service\":1,\"timestamp\":\"2018-12-26T11:22:33.051Z\"}",
-						"include_timestamp": true,
-						"button_color": "red",
-						"headers": [
-							{
-								"name": "content-type",
-								"value": "application/json"
-							}
-						]
-					}
-				}
-			]
-		},
-		{
-			"width": 1,
-			"row": {
 				"3": 1
-			},
-			"col": {
-				"3": 3
 			},
 			"col_width": 1,
 			"widgets": [
@@ -106,7 +77,7 @@
 						"button_name": "Pick and Place 2 - Refill",
 						"http_verb": "POST",
 						"rest_path": "http://elasticsearchserver:9200/fb/event",
-						"post_value": "{\"pp2_refill\":1,\"timestamp\":\"2018-12-26T11:22:26.887Z\"}",
+						"post_value": "{\"pp2_refill\":1,\"timestamp\":\"2018-10-03T05:56:00.663Z\"}",
 						"include_timestamp": true,
 						"button_color": "green",
 						"headers": [
@@ -122,10 +93,10 @@
 		{
 			"width": 1,
 			"row": {
-				"3": 19
+				"3": 7
 			},
 			"col": {
-				"3": 1
+				"3": 3
 			},
 			"col_width": 1,
 			"widgets": [
@@ -135,7 +106,7 @@
 						"button_name": "Reflow Oven - Service",
 						"http_verb": "POST",
 						"rest_path": "http://elasticsearchserver:9200/fb/event",
-						"post_value": "{\"rf_service\":1,\"timestamp\":\"2018-12-26T11:22:38.050Z\"}",
+						"post_value": "{\"rf_service\":1,\"timestamp\":\"2018-10-03T06:25:49.385Z\"}",
 						"include_timestamp": true,
 						"button_color": "red",
 						"headers": [
@@ -151,7 +122,7 @@
 		{
 			"width": 1,
 			"row": {
-				"3": 13
+				"3": 7
 			},
 			"col": {
 				"3": 2
@@ -164,7 +135,7 @@
 						"button_name": "Pick and Place 2 - Service",
 						"http_verb": "POST",
 						"rest_path": "http://elasticsearchserver:9200/fb/event",
-						"post_value": "{\"pp2_service\":1,\"timestamp\":\"2018-12-26T11:22:30.589Z\"}",
+						"post_value": "{\"pp2_service\":1,\"timestamp\":\"2018-10-03T06:29:37.937Z\"}",
 						"include_timestamp": true,
 						"button_color": "red",
 						"headers": [
@@ -180,49 +151,20 @@
 		{
 			"width": 1,
 			"row": {
-				"3": 7
+				"3": 13
 			},
 			"col": {
 				"3": 1
 			},
-			"col_width": 1,
+			"col_width": 3,
 			"widgets": [
 				{
 					"type": "button_widget",
 					"settings": {
-						"button_name": "Break START",
+						"button_name": "Break (Lunch/Tea)",
 						"http_verb": "POST",
 						"rest_path": "http://elasticsearchserver:9200/fb/event",
-						"post_value": "{\"break\":1,\"timestamp\":\"2018-12-26T11:22:25.145Z\"}",
-						"include_timestamp": true,
-						"button_color": "orange",
-						"headers": [
-							{
-								"name": "content-type",
-								"value": "application/json"
-							}
-						]
-					}
-				}
-			]
-		},
-		{
-			"width": 1,
-			"row": {
-				"3": 7
-			},
-			"col": {
-				"3": 2
-			},
-			"col_width": 1,
-			"widgets": [
-				{
-					"type": "button_widget",
-					"settings": {
-						"button_name": "Break STOP",
-						"http_verb": "POST",
-						"rest_path": "http://elasticsearchserver:9200/fb/event",
-						"post_value": "{\"break\":0,\"timestamp\":\"2018-12-26T11:22:24.476Z\"}",
+						"post_value": "{\"break\":1,\"timestamp\":\"2018-10-03T09:50:05.191Z\"}",
 						"include_timestamp": true,
 						"button_color": "orange",
 						"headers": [
@@ -239,35 +181,6 @@
 			"width": 1,
 			"row": {
 				"3": 1
-			},
-			"col": {
-				"3": 1
-			},
-			"col_width": 1,
-			"widgets": [
-				{
-					"type": "button_widget",
-					"settings": {
-						"button_name": "Loader Refill",
-						"http_verb": "POST",
-						"rest_path": "http://elasticsearchserver:9200/fb/event",
-						"post_value": "{\"loader_refill\":1,\"timestamp\":\"2018-12-26T11:22:25.807Z\"}",
-						"include_timestamp": true,
-						"button_color": "green",
-						"headers": [
-							{
-								"name": "content-type",
-								"value": "application/json"
-							}
-						]
-					}
-				}
-			]
-		},
-		{
-			"width": 1,
-			"row": {
-				"3": 7
 			},
 			"col": {
 				"3": 3
@@ -277,12 +190,12 @@
 				{
 					"type": "button_widget",
 					"settings": {
-						"button_name": "Screenprinter Special Mode",
+						"button_name": "Screen Printer - Service",
 						"http_verb": "POST",
 						"rest_path": "http://elasticsearchserver:9200/fb/event",
-						"post_value": "{\"sp_special_mode\":1,\"timestamp\":\"2018-12-26T11:22:23.638Z\"}",
+						"post_value": "{\"sp_service\":1,\"timestamp\":\"2018-10-03T10:42:54.830Z\"}",
 						"include_timestamp": true,
-						"button_color": "orange",
+						"button_color": "red",
 						"headers": [
 							{
 								"name": "content-type",
